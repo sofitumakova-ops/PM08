@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omega IT — Кабинет партнёра</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" onclick="closeMenu()"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">Ω OMEGA<span>IT</span><small>PARTNER PLATFORM</small></div>
+
+      <div class="nav-label">Рабочее пространство</div>
+      <nav class="nav">
+        <button class="active" data-page="dashboard"><span class="ico">▦</span><span>Обзор</span></button>
+        <button data-page="projects"><span class="ico">▣</span><span>Мои проекты</span></button>
+        <button data-page="services"><span class="ico">◇</span><span>Услуги Omega IT</span></button>
+        <button data-page="finance"><span class="ico">₽</span><span>Финансы и выплаты</span></button>
+        <button data-page="documents"><span class="ico">▤</span><span>Документы</span></button>
+      </nav>
+
+      <div class="nav-label">Коммуникация</div>
+      <nav class="nav">
+        <button data-page="messages"><span class="ico">✉</span><span>Сообщения</span></button>
+        <button data-page="support"><span class="ico">◌</span><span>Поддержка</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="support">
+          <b>Нужна помощь?</b>Ваш персональный менеджер на связи.<br>
+          <button onclick="openModal('support')">Написать менеджеру</button>
+        </div>
+        © 2026 Omega IT
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu" id="menuBtn" aria-label="Открыть меню" aria-expanded="false" onclick="toggleMenu()">☰</button>
+          <div class="crumb">Партнёрский кабинет <span class="muted">/</span> <b id="crumb">Обзор</b></div>
+        </div>
+        <div class="top-right">
+          <button class="icon-btn" onclick="notify('Новых уведомлений нет')">♧</button>
+          <div class="user">
+            <div class="avatar">АИ</div>
+            <div>
+              <b>Александр Иванов</b>
+              <small>Партнёр · Gold</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- ================= DASHBOARD ================= -->
+        <section class="page active" id="dashboard">
+          <div class="heading">
+            <div>
+              <h1>Добро пожаловать, Александр!</h1>
+              <p>Здесь собрана актуальная информация о вашем сотрудничестве с Omega IT.</p>
+            </div>
+            <button class="primary" onclick="openModal('project')">＋ Создать заявку</button>
+          </div>
+
+          <div class="grid stats">
+            <div class="card">
+              <div class="stat-top">Активные проекты <span class="stat-icon">▣</span></div>
+              <div class="stat-value">08</div>
+              <div class="trend">↑ 2 за этот месяц</div>
+            </div>
+            <div class="card">
+              <div class="stat-top">Партнёрское вознаграждение <span class="stat-icon">₽</span></div>
+              <div class="stat-value">84 500 ₽</div>
+              <div class="trend">↑ 12,8% к прошлому месяцу</div>
+            </div>
+            <div class="card">
+              <div class="stat-top">Переданные лиды <span class="stat-icon">♧</span></div>
+              <div class="stat-value">24</div>
+              <div class="trend">↑ 6 новых лидов</div>
+            </div>
+            <div class="card">
+              <div class="stat-top">Конверсия в сделки <span class="stat-icon">↗</span></div>
+              <div class="stat-value">32,4%</div>
+              <div class="trend">↑ 4,2 п.п. за месяц</div>
+            </div>
+          </div>
+
+          <div class="grid main-grid">
+            <div class="card">
+              <div class="card-head">
+                <h3>Динамика вознаграждения</h3>
+                <select id="period" onchange="changePeriod()">
+                  <option value="6">Последние 6 месяцев</option>
+                  <option value="4">Последние 4 месяца</option>
+                </select>
+              </div>
+              <div class="chart-legend">
+                <span><i class="dot"></i>Вознаграждение</span>
+                <span><i class="dot orange"></i>Лиды</span>
+              </div>
+              <div class="chart">
+                <svg viewBox="0 0 650 180" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="fill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0" stop-color="#4169f5" stop-opacity=".2"/>
+                      <stop offset="1" stop-color="#4169f5" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 145 C45 135 60 112 130 120 S210 92 260 103 S350 65 390 80 S480 35 520 55 S600 22 650 15 L650 180 L0 180Z" fill="url(#fill)"/>
+                  <path d="M0 145 C45 135 60 112 130 120 S210 92 260 103 S350 65 390 80 S480 35 520 55 S600 22 650 15" fill="none" stroke="#4169f5" stroke-width="3" vector-effect="non-scaling-stroke"/>
+                  <path d="M0 158 C80 150 100 145 130 150 S220 125 260 140 S350 115 390 125 S480 100 520 115 S600 88 650 95" fill="none" stroke="#f4a340" stroke-width="2" stroke-dasharray="5 5" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+              <div class="months">
+                <span>Июнь</span><span>Июль</span><span>Август</span><span>Сентябрь</span><span>Октябрь</span><span>Ноябрь</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3>Структура проектов</h3>
+                <span class="muted fs-11">8 проектов</span>
+              </div>
+              <div class="progress-list">
+                <div class="progress-row">
+                  <div class="progress-title"><span>Разработка сайтов</span><span>3</span></div>
+                  <div class="bar"><i style="width:78%"></i></div>
+                </div>
+                <div class="progress-row">
+                  <div class="progress-title"><span>SEO-оптимизация</span><span>2</span></div>
+                  <div class="bar green"><i style="width:55%"></i></div>
+                </div>
+                <div class="progress-row">
+                  <div class="progress-title"><span>Контекстная реклама</span><span>2</span></div>
+                  <div class="bar orange"><i style="width:55%"></i></div>
+                </div>
+                <div class="progress-row">
+                  <div class="progress-title"><span>Комплексный маркетинг</span><span>1</span></div>
+                  <div class="bar"><i style="width:28%"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid service-grid">
+            <div class="card service">
+              <div class="service-ico">⌘</div>
+              <div>
+                <h4>Разработка сайтов</h4>
+                <p>Создание сайтов и цифровых решений под задачи бизнеса.</p>
+              </div>
+            </div>
+            <div class="card service">
+              <div class="service-ico">◎</div>
+              <div>
+                <h4>Контекстная реклама</h4>
+                <p>Настройка и ведение рекламных кампаний.</p>
+              </div>
+            </div>
+            <div class="card service">
+              <div class="service-ico">⌕</div>
+              <div>
+                <h4>SEO-оптимизация</h4>
+                <p>Рост органического трафика и видимости сайта.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>Последние проекты</h3>
+              <button class="outline" onclick="showPage('projects')">Все проекты →</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Проект</th>
+                    <th>Услуга</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                    <th>Вознаграждение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="project">Интернет-магазин «ТехноДом»</td>
+                    <td>Разработка сайта</td>
+                    <td>12.11.2026</td>
+                    <td><span class="status">В работе</span></td>
+                    <td>35 000 ₽</td>
+                  </tr>
+                  <tr>
+                    <td class="project">Клиника «Здоровье+»</td>
+                    <td>SEO-оптимизация</td>
+                    <td>08.11.2026</td>
+                    <td><span class="status wait">На согласовании</span></td>
+                    <td>18 500 ₽</td>
+                  </tr>
+                  <tr>
+                    <td class="project">«Лофт Мебель»</td>
+                    <td>Контекстная реклама</td>
+                    <td>03.11.2026</td>
+                    <td><span class="status">В работе</span></td>
+                    <td>12 000 ₽</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="grid bottom-grid mt-20">
+            <div class="card">
+              <div class="card-head">
+                <h3>Последние события</h3>
+                <span class="muted fs-11">За неделю</span>
+              </div>
+              <div class="activity">
+                <div class="activity-item">
+                  <i class="activity-dot"></i>
+                  <div>
+                    <b>Проект «ТехноДом» перешёл в работу</b>
+                    <p>Менеджер подтвердил запуск проекта.</p>
+                    <time>Сегодня, 11:42</time>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <i class="activity-dot dot-green"></i>
+                  <div>
+                    <b>Начислено вознаграждение</b>
+                    <p>На ваш баланс добавлено 12 500 ₽.</p>
+                    <time>Вчера, 16:20</time>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <i class="activity-dot dot-orange"></i>
+                  <div>
+                    <b>Новый лид ожидает подтверждения</b>
+                    <p>Заявка № 024 · «СтройГарант».</p>
+                    <time>10 ноября, 09:15</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3>Ваш менеджер</h3>
+                <span class="status">На связи</span>
+              </div>
+              <div class="contact">
+                <div class="avatar">МП</div>
+                <div>
+                  <b>Мария Петрова</b>
+                  <p>Персональный менеджер</p>
+                </div>
+              </div>
+              <p class="muted fs-12">Поможет с проектами, документами и вопросами по партнёрской программе.</p>
+              <button class="primary mt-12" onclick="openModal('support')">Написать менеджеру</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PROJECTS ================= -->
+        <section class="page" id="projects">
+          <div class="heading">
+            <div>
+              <h1>Мои проекты</h1>
+              <p>Отслеживайте заявки, этапы реализации и начисления.</p>
+            </div>
+            <button class="primary" onclick="openModal('project')">＋ Новая заявка</button>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <h3>Все проекты</h3>
+              <select onchange="filterProjects(this.value)">
+                <option value="all">Все статусы</option>
+                <option value="В работе">В работе</option>
+                <option value="На согласовании">На согласовании</option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table id="projectsTable">
+                <thead>
+                  <tr>
+                    <th>Проект</th>
+                    <th>Услуга</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                    <th>Вознаграждение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="project">Интернет-магазин «ТехноДом»</td>
+                    <td>Разработка сайта</td>
+                    <td>12.11.2026</td>
+                    <td><span class="status">В работе</span></td>
+                    <td>35 000 ₽</td>
+                  </tr>
+                  <tr>
+                    <td class="project">Клиника «Здоровье+»</td>
+                    <td>SEO-оптимизация</td>
+                    <td>08.11.2026</td>
+                    <td><span class="status wait">На согласовании</span></td>
+                    <td>18 500 ₽</td>
+                  </tr>
+                  <tr>
+                    <td class="project">«Лофт Мебель»</td>
+                    <td>Контекстная реклама</td>
+                    <td>03.11.2026</td>
+                    <td><span class="status">В работе</span></td>
+                    <td>12 000 ₽</td>
+                  </tr>
+                  <tr>
+                    <td class="project">«ЭкоФерма»</td>
+                    <td>Комплексный маркетинг</td>
+                    <td>28.10.2026</td>
+                    <td><span class="status done">Завершён</span></td>
+                    <td>19 000 ₽</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section class="page" id="services">
+          <div class="heading">
+            <div>
+              <h1>Услуги Omega IT</h1>
+              <p>Направления, по которым вы можете передавать клиентов.</p>
+            </div>
+            <button class="primary" onclick="openModal('project')">Подключить услугу</button>
+          </div>
+          <div class="grid service-grid">
+            <div class="card service">
+              <div class="service-ico">⌘</div>
+              <div>
+                <h4>Разработка сайтов</h4>
+                <p>Корпоративные сайты, лендинги и интернет-магазины. Проектирование, дизайн и разработка.</p>
+              </div>
+            </div>
+            <div class="card service">
+              <div class="service-ico">◎</div>
+              <div>
+                <h4>Контекстная реклама</h4>
+                <p>Запуск, настройка и оптимизация рекламных кампаний для привлечения целевой аудитории.</p>
+              </div>
+            </div>
+            <div class="card service">
+              <div class="service-ico">⌕</div>
+              <div>
+                <h4>SEO-оптимизация</h4>
+                <p>Техническая оптимизация, контент и продвижение в поисковых системах.</p>
+              </div>
+            </div>
+            <div class="card service">
+              <div class="service-ico">↗</div>
+              <div>
+                <h4>Комплексный маркетинг</h4>
+                <p>Единая стратегия продвижения с аналитикой и контролем эффективности.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= FINANCE ================= -->
+        <section class="page" id="finance">
+          <div class="heading">
+            <div>
+              <h1>Финансы и выплаты</h1>
+              <p>Информация о начислениях и партнёрском вознаграждении.</p>
+            </div>
+            <button class="outline" onclick="notify('Запрос на выплату отправлен (демо)')">Запросить выплату</button>
+          </div>
+          <div class="grid stats">
+            <div class="card">
+              <div class="stat-top">Доступно к выплате</div>
+              <div class="stat-value">54 500 ₽</div>
+              <div class="trend">Готово к выводу</div>
+            </div>
+            <div class="card">
+              <div class="stat-top">Всего начислено</div>
+              <div class="stat-value">184 500 ₽</div>
+            </div>
+            <div class="card">
+              <div class="stat-top">Выплачено</div>
+              <div class="stat-value">130 000 ₽</div>
+            </div>
+            <div class="card">
+              <div class="stat-top">Ожидает начисления</div>
+              <div class="stat-value">30 000 ₽</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="mb-16">История операций</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Дата</th>
+                    <th>Операция</th>
+                    <th>Проект</th>
+                    <th>Сумма</th>
+                    <th>Статус</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12.11.2026</td>
+                    <td>Начисление</td>
+                    <td>ТехноДом</td>
+                    <td>+12 500 ₽</td>
+                    <td><span class="status">Зачислено</span></td>
+                  </tr>
+                  <tr>
+                    <td>01.11.2026</td>
+                    <td>Выплата</td>
+                    <td>Партнёрский баланс</td>
+                    <td>−40 000 ₽</td>
+                    <td><span class="status done">Выплачено</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= DOCUMENTS ================= -->
+        <section class="page" id="documents">
+          <div class="heading">
+            <div>
+              <h1>Документы</h1>
+              <p>Договоры, акты и материалы партнёрской программы.</p>
+            </div>
+            <button class="outline" onclick="notify('Загрузка файлов доступна в полной версии')">＋ Загрузить документ</button>
+          </div>
+          <div class="card">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Документ</th>
+                    <th>Тип</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="project">Партнёрский договор № 014</td>
+                    <td>Договор</td>
+                    <td>01.09.2026</td>
+                    <td><span class="status">Подписан</span></td>
+                  </tr>
+                  <tr>
+                    <td class="project">Акт выполненных работ № 008</td>
+                    <td>Акт</td>
+                    <td>01.11.2026</td>
+                    <td><span class="status wait">Ожидает подписи</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= MESSAGES ================= -->
+        <section class="page" id="messages">
+          <div class="heading">
+            <div>
+              <h1>Сообщения</h1>
+              <p>Общение с командой Omega IT.</p>
+            </div>
+            <button class="primary" onclick="openModal('support')">＋ Написать</button>
+          </div>
+          <div class="card">
+            <div class="activity">
+              <div class="activity-item">
+                <i class="activity-dot"></i>
+                <div>
+                  <b>Мария Петрова · Персональный менеджер</b>
+                  <p>Добрый день! По проекту «ТехноДом» подготовили план работ. Готовы обсудить детали.</p>
+                  <time>Сегодня, 11:42</time>
+                </div>
+              </div>
+              <div class="activity-item">
+                <i class="activity-dot dot-green"></i>
+                <div>
+                  <b>Финансовый отдел</b>
+                  <p>Начисление по партнёрской программе подтверждено.</p>
+                  <time>Вчера, 16:20</time>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SUPPORT ================= -->
+        <section class="page" id="support">
+          <div class="heading">
+            <div>
+              <h1>Поддержка</h1>
+              <p>Задайте вопрос менеджеру — мы поможем разобраться.</p>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Связаться с командой</h3>
+            <p class="muted">Опишите вопрос, и менеджер свяжется с вами.</p>
+            <div class="field">
+              <label>Тема обращения</label>
+              <select id="supportTopic">
+                <option>Вопрос по проекту</option>
+                <option>Финансы и выплаты</option>
+                <option>Документы</option>
+                <option>Другое</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Сообщение</label>
+              <textarea id="supportMessage" placeholder="Напишите ваш вопрос..."></textarea>
+            </div>
+            <button class="primary" onclick="sendSupport()">Отправить обращение</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ================= MODAL ================= -->
+  <div class="modal-back" id="modal">
+    <div class="modal">
+      <h2 id="modalTitle">Новая заявка</h2>
+      <p id="modalDesc">Заполните информацию, чтобы передать проект команде Omega IT.</p>
+      <div id="modalFields">
+        <div class="field">
+          <label>Название проекта / компании</label>
+          <input id="projectName" placeholder="Например, Интернет-магазин">
+        </div>
+        <div class="field">
+          <label>Услуга</label>
+          <select id="projectService">
+            <option>Разработка сайтов</option>
+            <option>Контекстная реклама</option>
+            <option>SEO-оптимизация</option>
+            <option>Комплексный маркетинг</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Контакт клиента</label>
+          <input id="projectContact" placeholder="Телефон или e-mail">
+        </div>
+        <div class="field">
+          <label>Комментарий</label>
+          <textarea id="projectComment" placeholder="Кратко опишите задачу"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="outline" onclick="closeModal()">Отмена</button>
+        <button class="primary" onclick="submitModal()">Отправить</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
